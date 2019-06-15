@@ -139,6 +139,10 @@ std::vector<float> ransac_regression(std::vector<std::vector<float>>& points,
         if (maxx < n_closest) {
             maxx = n_closest;
             best_set = closest;
+            // if you want to make it dirty ;)
+            // if (n_closest >= (N / 2)) {
+            //     break;
+            // }
         }
 
     }
