@@ -7,7 +7,7 @@ To get the invitation to the private meetup in Yandex self-driving, the particip
 Detect the plane of the road in static lidar points cloud. The plane is described by four coefficients.  
 The solution was evaluated for accuracy and performance.  
 Limits: 64 mb RAM; 15 sec. running on single core of CPU.  
-<img src="https://github.com/gasparian/Yandex_self-driving_meetup-2019_test/blob/master/imgs/road.png" height=225>  
+<img src="https://github.com/gasparian/Yandex_self-driving_meetup-2019_test/blob/master/imgs/road.png" height=500>  
 There were some test examples given, which contains points coordinates in 3D space.  
 Also we knew that the road takes more than 50% of the points and these points should be concetrated in some neighborhood determined by input value `p`.  
 
