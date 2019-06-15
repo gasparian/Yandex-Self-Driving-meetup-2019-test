@@ -1,6 +1,7 @@
 ## Road plane detection
 
 To get the invitation to the private meetup in Yandex self-driving, the participants had to solve a simple computer-vision problem.  
+(I've passed).
 
 ### Task  
 
