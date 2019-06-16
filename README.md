@@ -15,7 +15,7 @@ Also we knew that the road takes more than 50% of the points and these points sh
 ### Solution  
 
 We can fit a simple linear regression on given points coordinates. But there are a lot of outliers in the data, which will cause the problems in detecting road plane. So it's better to use the [ransac regression](https://en.wikipedia.org/wiki/Random_sample_consensus) algorithm in this case, for its' robustness.  
-The main idea is to iteratively sample triplets of points, find a plane and calculate the number of neighbors. After finding the good initial plane, we can now fir plane using all neighbors found.   
+The main idea is to iteratively sample triplets of points, find a plane and calculate the number of neighbors. After finding the good initial plane, we can now fit a plane using all neighbors found.   
 But for sake of speed-up, we need to somehow stop iteratining earlier. We can do it in varouous ways: empiracally find optimal max. amount of iterations, which provides minimum value of plane coefficients dispersion; stop iterating after finding the plane wich has more than a 50% of points being its' neighbors and so on.  
 In my implementation I used both methods, but keep in mind - it's less guaranteed to find the accurate plane using the second approach.  
 So I had the folowing results:  
