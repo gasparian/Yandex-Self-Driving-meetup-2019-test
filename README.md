@@ -26,4 +26,4 @@ So I had the folowing results:
 
 I've been using `GNU C++11 4.9` and the folowing compilation settings:  
 `g++ -O2 -fno-stack-limit -x c++ detect_road_plane.cpp -o detect_road_plane`  
-You can also use `performance_measure.sh` for speed measures.  
+You can also run `performance_measure.sh` for speed measures.  
