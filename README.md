@@ -1,7 +1,6 @@
 ## Road plane detection
 
 To get the invitation to the private meetup in Yandex self-driving, the participants had to solve a simple computer-vision problem using the standard library only (except numpy in case of python).  
-(I've passed).
 
 ### Task  
 
