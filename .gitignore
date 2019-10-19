@@ -5,3 +5,4 @@ output.txt
 /notebooks
 detect_road_plane_fast
 detect_road_plane_fast.cpp
+.vscode
