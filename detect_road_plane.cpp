@@ -129,9 +129,9 @@ std::vector<float> ransac_regression(std::vector<std::vector<float>>& points,
         }
         
         dists = get_dists(points, v_n);
-        for (int i = 0; i < N; ++i) {
-            if (dists[i] <= p) {
-                closest.push_back(points[i]);
+        for (int k = 0; k < N; ++k) {
+            if (dists[k] <= p) {
+                closest.push_back(points[k]);
             }
         }
 
