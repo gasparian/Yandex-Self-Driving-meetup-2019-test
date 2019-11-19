@@ -107,20 +107,14 @@ std::vector<float> ransac_regression(std::vector<std::vector<float>>& points,
     std::uniform_int_distribution<> dis(0, (N-1));
 
     for (int i = 0; i < std::min(max_iters, N / 2); ++i) {
-        std::vector<std::vector<float>> chosen(3), closest;
+        std::vector<std::vector<float>> chosen, closest;
         std::set<int> uniques;
         int n_closest;
 
-        int j = 0;
-        while (j < 3) {
+        while (uniques.size() < 3) {
         	int idx = dis(gen);
-        	if (uniques.count(idx)) {
-        		continue;
-        	} else {
-        		chosen[j] = points[idx];
-        		uniques.insert(idx);
-        		j++;
-        	}
+        	chosen.push_back(points[idx]);
+        	uniques.insert(idx);
         }
 
         v_n = cross_product(chosen);
@@ -129,9 +123,9 @@ std::vector<float> ransac_regression(std::vector<std::vector<float>>& points,
         }
         
         dists = get_dists(points, v_n);
-        for (int k = 0; k < N; ++k) {
-            if (dists[k] <= p) {
-                closest.push_back(points[k]);
+        for (int j = 0; j < N; ++j) {
+            if (dists[j] <= p) {
+                closest.push_back(points[j]);
             }
         }
 
