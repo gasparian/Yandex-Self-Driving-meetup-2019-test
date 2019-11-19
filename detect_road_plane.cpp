@@ -89,6 +89,7 @@ std::vector<float> get_dists(std::vector<std::vector<float>>& points, std::vecto
         }
         dists[r] += v_n[3];
         dists[r] = std::abs(dists[r]);
+        dists[r] /= std::sqrt(v_n[0]*v_n[0] + v_n[1]*v_n[1] + v_n[2]*v_n[2]);
     }
 
     return dists;
