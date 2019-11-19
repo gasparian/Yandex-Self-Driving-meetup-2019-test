@@ -78,21 +78,17 @@ std::vector<float> cross_product(std::vector<std::vector<float>>& points) {
     return dirr;
 }
 
-std::vector<float> get_dists(std::vector<std::vector<float>>& points, std::vector<float>& v_n) {
-    int N = points.size();
-    std::vector<float> dists(N);
+float get_dist(std::vector<float>& point, std::vector<float>& v_n) {
+    float dist = 0.0;
 
-    for (int r = 0; r < N; ++r) {
-        dists[r] = 0.0;
-        for (int c = 0; c < 3; ++c) {
-            dists[r] += points[r][c] * v_n[c];
-        }
-        dists[r] += v_n[3];
-        dists[r] = std::abs(dists[r]);
-        dists[r] /= std::sqrt(v_n[0]*v_n[0] + v_n[1]*v_n[1] + v_n[2]*v_n[2]);
+    for (int c = 0; c < 3; ++c) {
+        dist += point[c] * v_n[c];
     }
+    dist += v_n[3];
+    dist = std::abs(dist);
+    dist /= std::sqrt(v_n[0]*v_n[0] + v_n[1]*v_n[1] + v_n[2]*v_n[2]);
 
-    return dists;
+    return dist;
 }
 
 std::vector<float> ransac_regression(std::vector<std::vector<float>>& points, 
@@ -100,8 +96,9 @@ std::vector<float> ransac_regression(std::vector<std::vector<float>>& points,
     const int N = points.size();
 
     int maxx = -1;
+    float dist;
     std::vector<std::vector<float>> best_set;
-    std::vector<float> v_n(4), dists(N);
+    std::vector<float> v_n(4);
 
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -123,9 +120,9 @@ std::vector<float> ransac_regression(std::vector<std::vector<float>>& points,
             continue;
         }
         
-        dists = get_dists(points, v_n);
         for (int j = 0; j < N; ++j) {
-            if (dists[j] <= p) {
+            dist = get_dist(points[j], v_n);
+            if (dist <= p) {
                 closest.push_back(points[j]);
             }
         }
