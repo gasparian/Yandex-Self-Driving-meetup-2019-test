@@ -11,7 +11,7 @@
 // GNU C++11 4.9
 // g++ -O2 -fno-stack-limit -x c++ detect_road_plane.cpp -o detect_road_plane
 
-std::vector<float> cross_product(std::vector<std::vector<float>>& points) {
+std::vector<float> get_coefs(std::vector<std::vector<float>>& points) {
     float summ[3] = {0.0, 0.0, 0.0}, centroid[3];
     const int N = points.size();
 
@@ -115,7 +115,7 @@ std::vector<float> ransac_regression(std::vector<std::vector<float>>& points,
         	uniques.insert(idx);
         }
 
-        v_n = cross_product(chosen);
+        v_n = get_coefs(chosen);
         if (v_n.size() == 0) {
             continue;
         }
@@ -140,7 +140,7 @@ std::vector<float> ransac_regression(std::vector<std::vector<float>>& points,
     }
 
     if (best_set.size() > 2) {
-    	return cross_product(best_set);
+    	return get_coefs(best_set);
     } else {
     	return {};
     }
